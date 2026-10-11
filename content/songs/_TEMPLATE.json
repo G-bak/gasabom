@@ -1,0 +1,23 @@
+{
+  "id": "your-song-id",
+  "title": "노래 제목",
+  "titleJa": "日本語タイトル",
+  "artist": "가수 이름",
+  "description": "이 곡을 연습하는 이유나 메모",
+  "genre": "J-POP",
+  "difficulty": "보통",
+  "coverTheme": "violet",
+  "audioSrc": "/audio/your-song-id.mp3",
+  "tags": ["즐겨듣는 곡"],
+  "lines": [
+    {
+      "id": "line-01",
+      "section": "1절",
+      "start": 0,
+      "end": 4.5,
+      "ja": "ここに日本語の歌詞",
+      "koPronunciation": "여기에 직접 준비한 한글 발음",
+      "koTranslation": "여기에 직접 준비한 한국어 뜻"
+    }
+  ]
+}

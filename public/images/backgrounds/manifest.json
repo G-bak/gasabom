@@ -1,0 +1,209 @@
+{
+  "version": 2,
+  "pages": {
+    "home": {
+      "desktop": [
+        {
+          "width": 1920,
+          "height": 640,
+          "webp": "/images/backgrounds/home-desktop-1920x640.webp",
+          "avif": "/images/backgrounds/home-desktop-1920x640.avif"
+        },
+        {
+          "width": 1440,
+          "height": 480,
+          "webp": "/images/backgrounds/home-desktop-1440x480.webp",
+          "avif": "/images/backgrounds/home-desktop-1440x480.avif"
+        },
+        {
+          "width": 1024,
+          "height": 341,
+          "webp": "/images/backgrounds/home-desktop-1024x341.webp",
+          "avif": "/images/backgrounds/home-desktop-1024x341.avif"
+        }
+      ],
+      "mobile": [
+        {
+          "width": 960,
+          "height": 1440,
+          "webp": "/images/backgrounds/home-mobile-960x1440.webp",
+          "avif": "/images/backgrounds/home-mobile-960x1440.avif"
+        },
+        {
+          "width": 640,
+          "height": 960,
+          "webp": "/images/backgrounds/home-mobile-640x960.webp",
+          "avif": "/images/backgrounds/home-mobile-640x960.avif"
+        }
+      ],
+      "textArea": "PC 왼쪽 50%, 모바일 상단 45%",
+      "ultrawide": [
+        {
+          "width": 3840,
+          "height": 1280,
+          "webp": "/images/backgrounds/home-ultrawide-3840x1280.webp",
+          "avif": "/images/backgrounds/home-ultrawide-3840x1280.avif"
+        },
+        {
+          "width": 2560,
+          "height": 853,
+          "webp": "/images/backgrounds/home-ultrawide-2560x853.webp",
+          "avif": "/images/backgrounds/home-ultrawide-2560x853.avif"
+        }
+      ]
+    },
+    "library": {
+      "desktop": [
+        {
+          "width": 1920,
+          "height": 360,
+          "webp": "/images/backgrounds/library-desktop-1920x360.webp",
+          "avif": "/images/backgrounds/library-desktop-1920x360.avif"
+        },
+        {
+          "width": 1440,
+          "height": 270,
+          "webp": "/images/backgrounds/library-desktop-1440x270.webp",
+          "avif": "/images/backgrounds/library-desktop-1440x270.avif"
+        },
+        {
+          "width": 1024,
+          "height": 192,
+          "webp": "/images/backgrounds/library-desktop-1024x192.webp",
+          "avif": "/images/backgrounds/library-desktop-1024x192.avif"
+        }
+      ],
+      "mobile": [
+        {
+          "width": 960,
+          "height": 480,
+          "webp": "/images/backgrounds/library-mobile-960x480.webp",
+          "avif": "/images/backgrounds/library-mobile-960x480.avif"
+        },
+        {
+          "width": 640,
+          "height": 320,
+          "webp": "/images/backgrounds/library-mobile-640x320.webp",
+          "avif": "/images/backgrounds/library-mobile-640x320.avif"
+        }
+      ],
+      "textArea": "PC 왼쪽 50%, 모바일 왼쪽 35%",
+      "ultrawide": [
+        {
+          "width": 3840,
+          "height": 720,
+          "webp": "/images/backgrounds/library-ultrawide-3840x720.webp",
+          "avif": "/images/backgrounds/library-ultrawide-3840x720.avif"
+        },
+        {
+          "width": 2560,
+          "height": 480,
+          "webp": "/images/backgrounds/library-ultrawide-2560x480.webp",
+          "avif": "/images/backgrounds/library-ultrawide-2560x480.avif"
+        }
+      ]
+    },
+    "practice": {
+      "desktop": [
+        {
+          "width": 1920,
+          "height": 480,
+          "webp": "/images/backgrounds/practice-desktop-1920x480.webp",
+          "avif": "/images/backgrounds/practice-desktop-1920x480.avif"
+        },
+        {
+          "width": 1440,
+          "height": 360,
+          "webp": "/images/backgrounds/practice-desktop-1440x360.webp",
+          "avif": "/images/backgrounds/practice-desktop-1440x360.avif"
+        },
+        {
+          "width": 1024,
+          "height": 256,
+          "webp": "/images/backgrounds/practice-desktop-1024x256.webp",
+          "avif": "/images/backgrounds/practice-desktop-1024x256.avif"
+        }
+      ],
+      "mobile": [
+        {
+          "width": 960,
+          "height": 480,
+          "webp": "/images/backgrounds/practice-mobile-960x480.webp",
+          "avif": "/images/backgrounds/practice-mobile-960x480.avif"
+        },
+        {
+          "width": 640,
+          "height": 320,
+          "webp": "/images/backgrounds/practice-mobile-640x320.webp",
+          "avif": "/images/backgrounds/practice-mobile-640x320.avif"
+        }
+      ],
+      "textArea": "PC 왼쪽 50%, 모바일 왼쪽 35%",
+      "ultrawide": [
+        {
+          "width": 3840,
+          "height": 960,
+          "webp": "/images/backgrounds/practice-ultrawide-3840x960.webp",
+          "avif": "/images/backgrounds/practice-ultrawide-3840x960.avif"
+        },
+        {
+          "width": 2560,
+          "height": 640,
+          "webp": "/images/backgrounds/practice-ultrawide-2560x640.webp",
+          "avif": "/images/backgrounds/practice-ultrawide-2560x640.avif"
+        }
+      ]
+    },
+    "settings": {
+      "desktop": [
+        {
+          "width": 1920,
+          "height": 400,
+          "webp": "/images/backgrounds/settings-desktop-1920x400.webp",
+          "avif": "/images/backgrounds/settings-desktop-1920x400.avif"
+        },
+        {
+          "width": 1440,
+          "height": 300,
+          "webp": "/images/backgrounds/settings-desktop-1440x300.webp",
+          "avif": "/images/backgrounds/settings-desktop-1440x300.avif"
+        },
+        {
+          "width": 1024,
+          "height": 213,
+          "webp": "/images/backgrounds/settings-desktop-1024x213.webp",
+          "avif": "/images/backgrounds/settings-desktop-1024x213.avif"
+        }
+      ],
+      "mobile": [
+        {
+          "width": 960,
+          "height": 480,
+          "webp": "/images/backgrounds/settings-mobile-960x480.webp",
+          "avif": "/images/backgrounds/settings-mobile-960x480.avif"
+        },
+        {
+          "width": 640,
+          "height": 320,
+          "webp": "/images/backgrounds/settings-mobile-640x320.webp",
+          "avif": "/images/backgrounds/settings-mobile-640x320.avif"
+        }
+      ],
+      "textArea": "PC 왼쪽 50%, 모바일 왼쪽 30%; 필요 시 CSS 밝은 그라데이션",
+      "ultrawide": [
+        {
+          "width": 3840,
+          "height": 800,
+          "webp": "/images/backgrounds/settings-ultrawide-3840x800.webp",
+          "avif": "/images/backgrounds/settings-ultrawide-3840x800.avif"
+        },
+        {
+          "width": 2560,
+          "height": 533,
+          "webp": "/images/backgrounds/settings-ultrawide-2560x533.webp",
+          "avif": "/images/backgrounds/settings-ultrawide-2560x533.avif"
+        }
+      ]
+    }
+  }
+}

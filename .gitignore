@@ -1,0 +1,20 @@
+node_modules/
+.next/
+out/
+*.tsbuildinfo
+.env*
+!.env.example
+.DS_Store
+npm-debug.log*
+
+# Personal learning media and local-only production evidence
+public/audio/*.mp3
+content/songs/*.json
+!content/songs/_TEMPLATE.json
+content/txt/pretender.txt
+docs/evidence/
+design/
+previews/
+*.tmp
+*.bak
+.playwright-mcp/

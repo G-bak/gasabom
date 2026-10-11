@@ -1,0 +1,20 @@
+@id: watashi-no-uta
+@title: 나만의 노래
+@titleJa: 私の歌
+@artist: 내가 준비한 곡
+@genre: J-POP
+@difficulty: 쉬움
+@coverTheme: blue
+@audioSrc: /audio/watashi-no-uta.mp3
+@tags: 예시, 따라 부르기
+
+[1절]
+[00:00.00 - 00:04.00]
+空を見上げて
+소라오 미아게테
+하늘을 올려다보며
+
+[00:04.00 - 00:08.50]
+新しい朝を待ってる
+아타라시이 아사오 맛테루
+새로운 아침을 기다리고 있어

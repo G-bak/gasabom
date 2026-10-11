@@ -1,0 +1,31 @@
+{
+  "name": "gasabom-local",
+  "version": "1.0.0",
+  "private": true,
+  "description": "가사봄 — 일본어 원문·한글 발음·한국어 뜻을 함께 보며 따라 부르는 개인용 J-POP 연습실",
+  "scripts": {
+    "dev": "next dev --hostname 127.0.0.1",
+    "build": "next build",
+    "start": "next start --hostname 127.0.0.1",
+    "typecheck": "tsc --noEmit",
+    "validate:data": "node scripts/validate-songs.mjs",
+    "import:txt": "node scripts/import-txt.mjs",
+    "test": "node --import tsx --test tests/core.test.ts"
+  },
+  "dependencies": {
+    "fflate": "^0.8.3",
+    "next": "^16.0.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "@types/react": "^19.2.0",
+    "@types/react-dom": "^19.2.0",
+    "tsx": "^4.23.15",
+    "typescript": "^5.9.0"
+  },
+  "engines": {
+    "node": ">=20.9.0"
+  }
+}
