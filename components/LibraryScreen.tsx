@@ -8,6 +8,7 @@ import { CoverArt } from "@/components/CoverArt";
 import { Icon } from "@/components/Icon";
 import { usePracticeState } from "@/lib/storage";
 import type { Song } from "@/lib/types";
+import { publicAssetUrl } from "@/lib/site-paths";
 type Filter = "all" | "favorites" | "recent" | "learned";
 export function LibraryScreen({ songs }: { songs: Song[] }) {
   const params = useSearchParams();
@@ -269,10 +270,10 @@ export function LibraryScreen({ songs }: { songs: Song[] }) {
                   <span>{i + 1}</span>
                   <div className="artist-avatar">
                     <img
-                      src={
+                      src={publicAssetUrl(
                         songs.find((song) => song.artist === artist)
                           ?.coverSrc || "/brand/app-icon.png"
-                      }
+                      )}
                       alt=""
                     />
                   </div>

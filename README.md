@@ -2,6 +2,8 @@
 
 일본어 원문·한글 발음·한국어 뜻을 함께 보며 **한 곡씩** 연습하는 정적 사이트입니다. React·Next.js App Router·TypeScript로 빌드하며, 완성된 `out/` 폴더는 HTML·CSS·브라우저 JS와 음원/이미지만으로 실행됩니다. **설정 페이지와 애플리케이션 백엔드/API는 제거했습니다.**
 
+사이트 주소: **https://g-bak.github.io/gasabom/**. 코드·현재 곡 자료는 공개 저장소 G-bak/gasabom, 검증한 정적 배포 파일은 gh-pages 브랜치에 보관합니다.
+
 ## 빌드·실행
 
 Node.js 20.9 이상이 필요합니다. 최초 npm 설치에는 인터넷 연결이 필요합니다.
@@ -46,7 +48,7 @@ npm run build
 
 ## Git 업로드와 곡 이름
 
-**G-bak/gasabom 비공개 저장소**에 코드와 현재 한 곡의 MP3·가사 JSON/TXT를 함께 보관합니다. out은 생성 결과라 제외하며, 브라우저 개인 기록·디자인 원본·검수 백업도 제외합니다.
+**G-bak/gasabom 공개 저장소**에 코드와 현재 한 곡의 MP3·가사 JSON/TXT를 함께 보관합니다. main에서는 out을 생성 결과라 제외하며, 브라우저 개인 기록·디자인 원본·검수 백업도 제외합니다.
 
 커밋 메시지는 항상 **`곡 이름: 변경 내용`** 형식입니다. 현재 곡 제목을 자동으로 넣으려면 다음 순서를 사용합니다.
 
@@ -60,14 +62,20 @@ npm run commit:song -- "곡 자료 교체"
 git push
 ```
 
-commit:message는 메시지 확인, commit:song은 활성 곡과 최신 빌드를 확인한 뒤 스테이징한 변경을 커밋합니다. 이번 커밋은 `Pretender: 정적 사이트 전환 및 곡 자료 포함`입니다. Git 업로드와 정적 호스팅 배포는 별개이며, 호스팅에는 전체 out 폴더를 올립니다.
+commit:message는 메시지 확인, commit:song은 활성 곡과 최신 빌드를 확인한 뒤 스테이징한 변경을 커밋합니다. Git 업로드와 사이트 배포는 별도입니다. main에 올린 뒤 다음 명령으로 다시 배포합니다.
+
+```powershell
+npm run deploy:pages
+```
+
+deploy:pages는 작업 폴더가 깨끗하고 현재 main이 원격에 업로드됐는지 확인합니다. `/gasabom` 경로로 다시 빌드하고 출력/타입을 검사한 후 전체 정적 파일과 `.nojekyll`을 gh-pages에 올립니다. 배포 커밋에도 현재 곡 제목이 들어갑니다. GitHub Pages 설정은 **Deploy from a branch → gh-pages → /(root)**입니다. 게시 완료는 저장소 Actions에서 확인하며 업로드 후 수 분 걸릴 수 있습니다.
+
+배포 후에는 로컬 미리보기용 기본 경로로 다시 빌드하므로 `npm start` 주소는 그대로입니다. 곡 교체 때도 가사/MP3를 교체하고 검사 → 곡 이름 커밋 → git push → deploy:pages 순서를 사용합니다. main만 push하면 사이트는 갱신되지 않습니다.
 
 자세한 기준은 [정적 사이트·곡 교체 기록](docs/24_정적사이트_곡교체_커밋규칙.md), [검증 결과](TEST_RESULTS.md), [문서 안내](docs/README.md)를 확인하세요.
 
 ## 사이트 접근 범위
 
-사용자는 **본인만 접속하는 사이트**를 원합니다. 저장소는 비공개로 유지하며, GitHub Pages 공개 배포는 진행하지 않았습니다. 2026-10-12에 현재 저장소의 Pages 설정을 확인했으며, 요금제 업그레이드 또는 저장소 공개를 요구하는 상태입니다.
+2026-10-12 사용자가 요금제와 공개 범위를 확인한 뒤 **저장소 공개 전환과 무료 Pages 배포**를 요청했습니다. 앞선 본인만 접속 조건은 이 결정으로 대체됐습니다. 저장소 코드·커밋 이력·현재 MP3·가사 및 Pages 사이트를 누구나 볼 수 있습니다. 개인 학습 기록은 각 방문자의 브라우저에만 저장됩니다.
 
-비공개 저장소와 비공개 사이트는 별개입니다. Pro 요금제로 비공개 저장소에서 Pages를 사용해도 사이트와 포함된 MP3·가사는 인터넷에 공개됩니다. Pages의 비공개 접근 제한은 Enterprise Cloud 조직 소유의 비공개/내부 저장소에서 지원하며 현재 개인 계정 저장소에는 적용되지 않습니다. [공개 범위 안내](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site), [비공개 Pages 조건](https://docs.github.com/en/enterprise-cloud@latest/pages/getting-started-with-github-pages/changing-the-visibility-of-your-github-pages-site).
-
-현재는 `npm start`로 이 PC에서 사용합니다. 원격 개인 접속을 추가하려면 로그인 등으로 사이트 전체와 음원·가사 파일의 접근을 제한하는 호스팅이 필요합니다. 검색 제외 설정은 접근 제한이 아닙니다.
+검색 제외 설정은 유지하지만 접근 제한은 아닙니다. 사이트 전체와 MP3·가사까지 비공개로 해야 한다면 로그인 등 접근 제한을 지원하는 호스팅이 필요합니다. [GitHub Pages 공개 범위 안내](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site).

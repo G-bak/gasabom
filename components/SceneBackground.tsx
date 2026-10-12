@@ -1,4 +1,5 @@
 import manifest from "@/public/images/backgrounds/manifest.json";
+import { publicAssetUrl } from "@/lib/site-paths";
 export function SceneBackground({
   scene,
   priority = false,
@@ -8,9 +9,9 @@ export function SceneBackground({
 }) {
   const images = manifest.pages[scene];
   const ultrawideSet = (format: "webp" | "avif") =>
-    images.ultrawide.map((x) => `${x[format]} ${x.width}w`).join(", ");
+    images.ultrawide.map((x) => `${publicAssetUrl(x[format])} ${x.width}w`).join(", ");
   const srcset = (device: "mobile" | "desktop", format: "webp" | "avif") =>
-    images[device].map((x) => `${x[format]} ${x.width}w`).join(", ");
+    images[device].map((x) => `${publicAssetUrl(x[format])} ${x.width}w`).join(", ");
   return (
     <picture className="scene-background" aria-hidden="true">
       <source
@@ -43,7 +44,7 @@ export function SceneBackground({
         sizes="100vw"
       />
       <img
-        src={images.desktop[1].webp}
+        src={publicAssetUrl(images.desktop[1].webp)}
         srcSet={srcset("desktop", "webp")}
         sizes="100vw"
         alt=""

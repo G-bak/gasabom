@@ -34,6 +34,7 @@ export async function prepareExport(root = process.cwd()) {
       {
         format: "gasabom-static-build",
         version: 1,
+        basePath: process.env.NEXT_PUBLIC_BASE_PATH || "",
         songs: await songBuildSnapshot(root),
       },
       null,

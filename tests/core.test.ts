@@ -10,6 +10,15 @@ import { normalisePractice, DEFAULT_STATE } from "../lib/practice-data";
 import { songCommitMessage } from "../scripts/song-files.mjs";
 import { verifyExport } from "../scripts/verify-export.mjs";
 import { prepareExport } from "../scripts/prepare-export.mjs";
+import { publicAssetUrl } from "../lib/site-paths";
+
+test("루트와 Pages 하위 경로에서 음원·이미지 URL 생성", () => {
+  for (const src of ["/audio/song.mp3?v=abc", "/covers/song.svg", "/icons/favicon.svg?v=2"])
+    for (const basePath of ["", "/gasabom"])
+      assert.equal(publicAssetUrl(src, basePath), `${basePath}${src}`);
+  for (const src of ["", "data:image/png;base64,AA", "https://example.com/a.svg", "//example.com/a.svg"])
+    assert.equal(publicAssetUrl(src, "/gasabom"), src);
+});
 const sample = (id = "test-song") => ({
   id,
   title: "테스트 곡",

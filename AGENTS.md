@@ -4,14 +4,14 @@
 
 README.md, [정적 사이트·곡 교체·커밋 규칙](docs/24_정적사이트_곡교체_커밋규칙.md), TEST_RESULTS.md를 먼저 읽는다. 이전 docs/00~23의 설정·API·동적 서버·개인 자료 Git 제외 결정은 24번으로 대체됐다. 과거 기능/검증 문서는 이력으로만 읽는다.
 
-현재 사용자는 한 곡을 준비해 연습하고, 다음 곡으로 교체해 다시 빌드/업로드한다. React·Next.js App Router·TypeScript를 유지하되 output:export의 정적 사이트로 유지한다. 설정 페이지, 자료 등록/수정/삭제 API, ZIP 백업 API, 음원 제공 API와 Next 실행 서버를 다시 도입하지 않는다. DB·계정·결제·광고·클라우드·언어 API·크롤링·자동 번역/음역을 도입하지 않는다.
+현재 사용자는 한 곡을 준비해 연습하고, 다음 곡으로 교체해 다시 빌드/업로드한다. React·Next.js App Router·TypeScript를 유지하되 output:export의 정적 사이트로 유지한다. 설정 페이지, 자료 등록/수정/삭제 API, ZIP 백업 API, 음원 제공 API와 Next 실행 서버를 다시 도입하지 않는다. 앱에 DB·계정·결제·광고·클라우드/언어 API·크롤링·자동 번역/음역을 도입하지 않는다. 사용자가 승인한 GitHub Pages 정적 호스팅은 사용한다.
 
 ## Git·커밋
 
-- 사용자가 현재 한 곡의 MP3·JSON/TXT도 비공개 G-bak/gasabom에 포함하도록 승인했다. 이 자료를 다시 ignore 처리하지 않는다. 브라우저 개인 기록·검수 백업·디자인 원본과 생성된 out은 제외한다.
+- 사용자가 현재 한 곡의 MP3·JSON/TXT도 G-bak/gasabom에 포함하도록 승인했고, 2026-10-12 저장소를 공개로 전환하도록 요청했다. 이 자료를 다시 ignore 처리하지 않는다. 브라우저 개인 기록·검수 백업·디자인 원본과 main의 생성된 out은 제외한다. gh-pages에는 실제 정적 출력만 올린다.
 - 모든 작업 커밋 메시지는 현재 곡 이름을 포함한다. 기본 형식은 곡 이름: 변경 내용이다. 현재 예는 Pretender: 정적 사이트 전환 및 곡 자료 포함이다.
 - npm run commit:message는 현재 JSON의 제목으로 메시지를 확인한다. npm run commit:song은 활성 곡/최신 정적 출력을 검사하고 스테이징한 변경만 커밋한다. git push는 별도 단계다. 사용자 업로드 권한은 대화의 지시를 따른다.
-- 2026-10-12 사용자가 사이트 접근 범위를 “나만 접속해야 함”으로 지정했다. 개인 계정 GitHub Pages는 이 조건을 만족하지 못해 배포하지 않았다. 저장소를 공개로 바꾸거나 Pages 공개 배포를 활성화하지 않는다. 원격 배포에는 사이트뿐 아니라 MP3·가사 파일까지 접근을 제한해야 한다. robots/noindex를 인증으로 취급하지 않는다.
+- 2026-10-12 사용자가 Pro 요금제를 확인한 뒤 “그럼 그냥 공개로 바꿔”라고 지시했다. 앞선 개인 접근 조건은 대체됐으며 공개 저장소와 공개 Pages 배포를 승인했다. robots/noindex를 인증으로 취급하지 않는다. Pages 주소는 https://g-bak.github.io/gasabom/이다.
 
 ## 자료·기록 보존
 
@@ -29,6 +29,8 @@ content/songs에는 템플릿과 활성 JSON 한 개만 둔다. 새 곡은 별�
 - lib/practice-data.ts, lib/storage.ts, components/PracticeTools.tsx: 브라우저 학습 기록·노트·수동 단어장. 실제 기록으로 통계를 계산한다.
 - scripts/prepare-export.mjs: 정적 페이지 이동 조각 이름 호환 처리와 build-info 원본 해시 기록. scripts/verify-export.mjs는 현재 자료와 정적 결과의 일치/설정·API 제거를 검사한다.
 - npm run build로 out을 생성한다. 곡을 바꾸면 다시 빌드한다. npm start는 out만 제공하는 정적 파일 서버이며 127.0.0.1에 바인딩한다. 다른 정적 호스트에도 out을 전달할 수 있다. npm run dev는 개발 도구로만 사용한다.
+- lib/site-paths.ts는 이미지·음원·아이콘에 빌드 시 NEXT_PUBLIC_BASE_PATH를 적용한다. Next Link/router는 경로를 자동 적용하므로 이 도우미를 링크에 중복 적용하지 않는다. 로컬 기본 경로는 빈 값, Pages 경로는 /gasabom이다.
+- npm run deploy:pages는 깨끗하고 원격과 일치하는 main에서 Pages용 빌드/출력·타입을 확인해 gh-pages에 정적 파일과 .nojekyll을 올리고 로컬용 기본 경로로 다시 빌드한다. Pages는 gh-pages의 루트에서 게시한다. main만 push해선 사이트가 갱신되지 않으므로 곡 변경 업로드 후 deploy:pages도 실행하고 실제 게시를 확인한다.
 
 ## 화면 불변 조건
 

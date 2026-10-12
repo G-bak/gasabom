@@ -12,6 +12,7 @@
     "import:txt": "node scripts/import-txt.mjs",
     "test": "node --import tsx --test tests/core.test.ts",
     "verify:export": "node scripts/verify-export-cli.mjs",
+    "deploy:pages": "node scripts/deploy-pages.mjs",
     "commit:song": "node scripts/commit-song.mjs",
     "commit:message": "node scripts/commit-song.mjs --preview"
   },

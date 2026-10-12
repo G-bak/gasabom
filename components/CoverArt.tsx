@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import type { Song } from "@/lib/types";
+import { publicAssetUrl } from "@/lib/site-paths";
 
 type Props = {
   song: Song;
@@ -25,7 +26,7 @@ export function CoverArt({ song, size = "card", displayTitle = true }: Props) {
       {song.coverSrc && !failed && (
         <img
           className="cover-custom-img"
-          src={song.coverSrc}
+          src={publicAssetUrl(song.coverSrc)}
           alt={`${song.title} 곡 커버`}
           onError={() => setFailed(true)}
         />
@@ -33,7 +34,7 @@ export function CoverArt({ song, size = "card", displayTitle = true }: Props) {
       {(!song.coverSrc || failed) && (
         <img
           className="cover-custom-img"
-          src={defaultCovers[song.coverTheme || "blue"]}
+          src={publicAssetUrl(defaultCovers[song.coverTheme || "blue"])}
           alt={`${song.title} 기본 아트워크`}
           loading="lazy"
         />

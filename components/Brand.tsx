@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { publicAssetUrl } from "@/lib/site-paths";
 
 export function Brand({
   compact = false,
@@ -14,7 +15,7 @@ export function Brand({
       aria-label="가사봄 홈"
     >
       <img
-        src={`/brand/logo-${dark ? "dark" : "light"}.png`}
+        src={publicAssetUrl(`/brand/logo-${dark ? "dark" : "light"}.png`)}
         width="150"
         height="62"
         alt="가사봄 GASABOM"

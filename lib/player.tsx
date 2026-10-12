@@ -10,6 +10,7 @@ import {
 } from "react";
 import { usePracticeState } from "./storage";
 import { isFullyTimed, type Song } from "./types";
+import { publicAssetUrl } from "./site-paths";
 function usePlayerStore(songs: Song[]) {
   const {
     state,
@@ -63,7 +64,7 @@ function usePlayerStore(songs: Song[]) {
       if (a) {
         if (next.audioSrc)
           a.src =
-            next.audioSrc +
+            publicAssetUrl(next.audioSrc) +
             (next.audioRevision
               ? `?v=${encodeURIComponent(next.audioRevision)}`
               : "");

@@ -8,6 +8,7 @@ import { AppShell } from "@/components/AppShell";
 import { PracticeProvider } from "@/lib/storage";
 import { getCatalogue } from "@/lib/songs";
 import { PlayerProvider } from "@/lib/player";
+import { publicAssetUrl } from "@/lib/site-paths";
 
 const pretendard = localFont({
   src: "./fonts/PretendardVariable.woff2",
@@ -27,23 +28,23 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       {
-        url: "/icons/favicon-16x16.png?v=2",
+        url: publicAssetUrl("/icons/favicon-16x16.png?v=2"),
         sizes: "16x16",
         type: "image/png",
       },
       {
-        url: "/icons/favicon-32x32.png?v=2",
+        url: publicAssetUrl("/icons/favicon-32x32.png?v=2"),
         sizes: "32x32",
         type: "image/png",
       },
       {
-        url: "/icons/favicon-48x48.png?v=2",
+        url: publicAssetUrl("/icons/favicon-48x48.png?v=2"),
         sizes: "48x48",
         type: "image/png",
       },
-      { url: "/icons/favicon.svg?v=2", sizes: "any", type: "image/svg+xml" },
+      { url: publicAssetUrl("/icons/favicon.svg?v=2"), sizes: "any", type: "image/svg+xml" },
     ],
-    shortcut: "/favicon.ico?v=2",
+    shortcut: publicAssetUrl("/favicon.ico?v=2"),
   },
 };
 

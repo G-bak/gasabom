@@ -7,7 +7,7 @@ import {
   checkActiveAudio,
 } from "./song-files.mjs";
 const hash = (bytes) => createHash("sha256").update(bytes).digest("hex");
-export async function verifyExport(root = process.cwd()) {
+export async function verifyExport(root = process.cwd(), { basePath } = {}) {
   const out = path.join(root, "out"),
     songs = await readSongFiles(root);
   if (songs.length > 1) throw new Error("한 번에 한 곡만 내보낼 수 있습니다.");
@@ -23,6 +23,8 @@ export async function verifyExport(root = process.cwd()) {
     throw new Error(
       "현재 곡 자료와 정적 출력이 다릅니다. npm run build를 다시 실행하세요.",
     );
+  if (basePath !== undefined && (info.basePath || "") !== basePath)
+    throw new Error("정적 출력의 배포 경로가 다릅니다. 해당 경로로 다시 빌드하세요.");
   for (const file of ["index.html", "library/index.html", "404.html"])
     await access(path.join(out, file));
   for (const retired of ["api", "settings"]) {
