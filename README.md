@@ -63,3 +63,11 @@ git push
 commit:message는 메시지 확인, commit:song은 활성 곡과 최신 빌드를 확인한 뒤 스테이징한 변경을 커밋합니다. 이번 커밋은 `Pretender: 정적 사이트 전환 및 곡 자료 포함`입니다. Git 업로드와 정적 호스팅 배포는 별개이며, 호스팅에는 전체 out 폴더를 올립니다.
 
 자세한 기준은 [정적 사이트·곡 교체 기록](docs/24_정적사이트_곡교체_커밋규칙.md), [검증 결과](TEST_RESULTS.md), [문서 안내](docs/README.md)를 확인하세요.
+
+## 사이트 접근 범위
+
+사용자는 **본인만 접속하는 사이트**를 원합니다. 저장소는 비공개로 유지하며, GitHub Pages 공개 배포는 진행하지 않았습니다. 2026-10-12에 현재 저장소의 Pages 설정을 확인했으며, 요금제 업그레이드 또는 저장소 공개를 요구하는 상태입니다.
+
+비공개 저장소와 비공개 사이트는 별개입니다. Pro 요금제로 비공개 저장소에서 Pages를 사용해도 사이트와 포함된 MP3·가사는 인터넷에 공개됩니다. Pages의 비공개 접근 제한은 Enterprise Cloud 조직 소유의 비공개/내부 저장소에서 지원하며 현재 개인 계정 저장소에는 적용되지 않습니다. [공개 범위 안내](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site), [비공개 Pages 조건](https://docs.github.com/en/enterprise-cloud@latest/pages/getting-started-with-github-pages/changing-the-visibility-of-your-github-pages-site).
+
+현재는 `npm start`로 이 PC에서 사용합니다. 원격 개인 접속을 추가하려면 로그인 등으로 사이트 전체와 음원·가사 파일의 접근을 제한하는 호스팅이 필요합니다. 검색 제외 설정은 접근 제한이 아닙니다.
