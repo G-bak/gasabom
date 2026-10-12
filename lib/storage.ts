@@ -23,7 +23,6 @@ export type {
 import {
   DEFAULT_STATE,
   normalisePractice,
-  mergeLearning,
   type PracticeState,
   type StudyWord,
   type Playlist,
@@ -281,47 +280,10 @@ function useStore() {
     },
     [],
   );
-  const restoreLearning = useCallback(
-    (incoming: PracticeState, policy: "merge" | "replace") =>
-      setState((p) =>
-        policy === "replace" ? incoming : mergeLearning(p, incoming),
-      ),
-    [],
-  );
-  const forgetSong = useCallback(
-    (id: string) =>
-      setState((p) => {
-        const learned = { ...p.learned },
-          bookmarks = { ...p.bookmarks },
-          recent = { ...p.recent },
-          playCounts = { ...p.playCounts };
-        delete learned[id];
-        delete bookmarks[id];
-        delete recent[id];
-        delete playCounts[id];
-        return {
-          ...p,
-          learned,
-          bookmarks,
-          recent,
-          playCounts,
-          favorites: p.favorites.filter((x) => x !== id),
-          notes: p.notes.filter((n) => n.songId !== id),
-          words: p.words.filter((w) => w.songId !== id),
-          playlists: p.playlists.map((l) => ({
-            ...l,
-            songIds: l.songIds.filter((x) => x !== id),
-          })),
-        };
-      }),
-    [],
-  );
   return {
     state,
     updateNote,
     updateWord,
-    restoreLearning,
-    forgetSong,
     ready,
     saveError,
     playerVolume,

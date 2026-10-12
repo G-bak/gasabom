@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import type { Metadata } from "next";
 import { LibraryScreen } from "@/components/LibraryScreen";
 import { getAllSongs } from "@/lib/songs";
-export const dynamic = "force-dynamic";
+export const dynamic = "force-static";
 export const metadata: Metadata = { title: "내 노래 보관함" };
 export default async function LibraryPage() {
   return (

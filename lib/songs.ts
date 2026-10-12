@@ -1,8 +1,9 @@
 import { promises as fs } from "node:fs";
 import path from "node:path";
+import { createHash } from "node:crypto";
 import { validateSong, SONG_ID } from "./song-schema.mjs";
 import type { Song } from "./types";
-import { safeFile } from "./library-service";
+import { safeDataFile } from "./data-files";
 export type SongIssue = { file: string; message: string };
 export async function getCatalogue(root = process.cwd()) {
   const directory = path.join(root, "content", "songs");
@@ -25,7 +26,7 @@ export async function getCatalogue(root = process.cwd()) {
         try {
           if (!SONG_ID.test(file.slice(0, -5)))
             throw new Error("파일명은 영문 소문자·숫자·하이픈으로 작성하세요.");
-          const filename = await safeFile(root, `content/songs/${file}`);
+          const filename = await safeDataFile(root, `content/songs/${file}`);
           const stat = await fs.lstat(filename);
           if (!stat.isFile() || stat.size > 10 * 1024 * 1024)
             throw new Error("일반 JSON 파일(최대 10MB)만 사용할 수 있습니다.");
@@ -33,8 +34,25 @@ export async function getCatalogue(root = process.cwd()) {
             JSON.parse(await fs.readFile(filename, "utf8")),
             file.slice(0, -5),
           );
+          let audioRevision = song.audioRevision;
+          if (song.audioSrc) {
+            try {
+              const audio = await fs.readFile(
+                await safeDataFile(root, `public${song.audioSrc}`),
+              );
+              audioRevision = createHash("sha256")
+                .update(audio)
+                .digest("hex")
+                .slice(0, 16);
+            } catch {
+              throw new Error(
+                "연결된 MP3를 읽을 수 없습니다. 빌드 전에 음원을 확인하세요.",
+              );
+            }
+          }
           return {
             ...song,
+            ...(audioRevision ? { audioRevision } : {}),
             addedAt: song.addedAt || stat.birthtime.toISOString(),
           };
         } catch (error) {

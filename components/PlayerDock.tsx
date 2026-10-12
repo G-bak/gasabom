@@ -4,7 +4,6 @@ import { CoverArt } from "./CoverArt";
 import { Icon } from "./Icon";
 import { usePlayer } from "@/lib/player";
 import { isFullyTimed } from "@/lib/types";
-import { SETTINGS_VISIBLE } from "@/lib/features";
 const stamp = (n: number) =>
   `${Math.floor(n / 60)}:${String(Math.floor(n % 60)).padStart(2, "0")}`;
 export function PlayerDock() {
@@ -12,8 +11,7 @@ export function PlayerDock() {
     song = p.song;
   if (!song) return null;
   const progress = p.duration ? (p.currentTime / p.duration) * 100 : 0,
-    canRepeat =
-      !!song.audioSrc && isFullyTimed(song) && p.duration > 0 && !p.isPreview;
+    canRepeat = !!song.audioSrc && isFullyTimed(song) && p.duration > 0;
   const now = (
     <>
       <CoverArt song={song} size="small" displayTitle={false} />
@@ -26,13 +24,9 @@ export function PlayerDock() {
   return (
     <div className="player-dock" aria-label="음원 재생기">
       <div className="player-layout">
-        {p.isPreview ? (
-          <div className="player-now">{now}</div>
-        ) : (
-          <Link className="player-now" href={`/songs/${song.id}`}>
-            {now}
-          </Link>
-        )}
+        <Link className="player-now" href={`/songs/${song.id}`}>
+          {now}
+        </Link>
         <div className="player-main-controls">
           <div className="transport-buttons">
             <button
@@ -130,7 +124,6 @@ export function PlayerDock() {
       {p.audioError && (
         <div className="player-error" role="alert">
           {p.audioError} <button onClick={p.retry}>다시 재생</button>
-          {SETTINGS_VISIBLE && <Link href="/settings">자료 관리</Link>}
         </div>
       )}
     </div>

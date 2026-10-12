@@ -5,15 +5,17 @@
   "description": "가사봄 — 일본어 원문·한글 발음·한국어 뜻을 함께 보며 따라 부르는 개인용 J-POP 연습실",
   "scripts": {
     "dev": "next dev --hostname 127.0.0.1",
-    "build": "next build",
-    "start": "next start --hostname 127.0.0.1",
+    "build": "npm run validate:data && next build && node scripts/prepare-export-cli.mjs && node scripts/verify-export-cli.mjs",
+    "start": "serve out --listen tcp://127.0.0.1:3000 --no-clipboard --no-port-switching",
     "typecheck": "tsc --noEmit",
     "validate:data": "node scripts/validate-songs.mjs",
     "import:txt": "node scripts/import-txt.mjs",
-    "test": "node --import tsx --test tests/core.test.ts"
+    "test": "node --import tsx --test tests/core.test.ts",
+    "verify:export": "node scripts/verify-export-cli.mjs",
+    "commit:song": "node scripts/commit-song.mjs",
+    "commit:message": "node scripts/commit-song.mjs --preview"
   },
   "dependencies": {
-    "fflate": "^0.8.3",
     "next": "^16.0.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
@@ -22,10 +24,14 @@
     "@types/node": "^22.0.0",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
+    "serve": "^14.2.6",
     "tsx": "^4.23.15",
     "typescript": "^5.9.0"
   },
   "engines": {
     "node": ">=20.9.0"
+  },
+  "overrides": {
+    "compression": "^1.8.2"
   }
 }

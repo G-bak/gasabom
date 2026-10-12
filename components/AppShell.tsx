@@ -9,7 +9,6 @@ import { usePlayer } from "@/lib/player";
 import { PlayerDock } from "./PlayerDock";
 import type { Song } from "@/lib/types";
 import type { SongIssue } from "@/lib/songs";
-import { SETTINGS_VISIBLE } from "@/lib/features";
 export function AppShell({
   children,
   songs,
@@ -19,7 +18,7 @@ export function AppShell({
   songs: Song[];
   issues: SongIssue[];
 }) {
-  const pathname = usePathname(),
+  const pathname = usePathname().replace(/\/$/, "") || "/",
     router = useRouter();
   const { state, saveError } = usePracticeState();
   const player = usePlayer();
@@ -33,7 +32,6 @@ export function AppShell({
     { label: "홈", href: "/" },
     { label: "보관함", href: "/library" },
     { label: "연습실", href: recent ? `/songs/${recent}` : "/library" },
-    ...(SETTINGS_VISIBLE ? [{ label: "설정", href: "/settings" }] : []),
   ];
   function search(e: FormEvent) {
     e.preventDefault();
@@ -77,19 +75,7 @@ export function AppShell({
               <Icon name="search" size={19} />
             </button>
           </form>
-          {SETTINGS_VISIBLE && (
-            <Link
-              className="profile-link"
-              href="/settings?tab=preferences"
-              aria-label={
-                state.options.personalName
-                  ? `${state.options.personalName} 개인 설정`
-                  : "개인 설정"
-              }
-            >
-              <Icon name="user" size={21} />
-            </Link>
-          )}
+
           <button
             className="menu-toggle"
             type="button"
@@ -103,18 +89,13 @@ export function AppShell({
       </header>
       {saveError && (
         <div className="storage-warning" role="status">
-          브라우저 저장이 제한되어 있습니다. 연습 기록을 보관하려면 학습 기록을
-          내보내세요.{" "}
-          {SETTINGS_VISIBLE && (
-            <Link href="/settings?tab=backup">백업 열기</Link>
-          )}
+          브라우저 저장이 제한되어 있습니다. 저장 제한을 확인해 주세요.
         </div>
       )}
       {issues.length > 0 && (
         <div className="storage-warning" role="status">
           읽을 수 없는 곡 자료 {issues.length}개가 있습니다. 유효한 곡은 계속
           사용할 수 있습니다.{" "}
-          {SETTINGS_VISIBLE && <Link href="/settings">오류 확인</Link>}
         </div>
       )}
       {children}
@@ -122,11 +103,7 @@ export function AppShell({
       <footer className="site-footer">
         <div className="footer-inner">
           <Brand dark />
-          {SETTINGS_VISIBLE && (
-            <nav aria-label="하단 메뉴">
-              <Link href="/settings?tab=backup">학습 기록 내보내기</Link>
-            </nav>
-          )}
+
           <p>
             가사봄 · J-POP 가사 연습
             <small>© {new Date().getFullYear()} GASABOM</small>

@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { SongPractice } from "@/components/SongPractice";
-import { getSongById } from "@/lib/songs";
+import { getAllSongs, getSongById } from "@/lib/songs";
 
-export const dynamic = "force-dynamic";
+export const dynamic = "force-static";
+export const dynamicParams = false;
+
+export async function generateStaticParams() {
+  return (await getAllSongs()).map((song) => ({ slug: song.id }));
+}
 
 type Props = { params: Promise<{ slug: string }> };
 

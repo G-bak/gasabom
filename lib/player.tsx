@@ -20,11 +20,8 @@ function usePlayerStore(songs: Song[]) {
     addListening,
   } = usePracticeState();
   const audioRef = useRef<HTMLAudioElement>(null),
-    songRef = useRef<Song | null>(null),
-    previewRef = useRef(false),
-    previewUrl = useRef<string | null>(null);
+    songRef = useRef<Song | null>(null);
   const [song, setSong] = useState<Song | null>(null),
-    [isPreview, setIsPreview] = useState(false),
     [currentTime, setCurrentTime] = useState(0),
     [duration, setDuration] = useState(0),
     [isPlaying, setIsPlaying] = useState(false),
@@ -44,12 +41,6 @@ function usePlayerStore(songs: Song[]) {
   const selectSong = useCallback(
     (next: Song) => {
       const a = audioRef.current;
-      if (previewUrl.current && previewUrl.current !== next.audioSrc) {
-        URL.revokeObjectURL(previewUrl.current);
-        previewUrl.current = null;
-      }
-      previewRef.current = false;
-      setIsPreview(false);
       if (
         songRef.current?.id === next.id &&
         songRef.current.audioSrc === next.audioSrc &&
@@ -211,27 +202,6 @@ function usePlayerStore(songs: Song[]) {
     },
     [pause, clearLoop],
   );
-  const previewAudio = useCallback(
-    (source: File | string, title = "선택 음원") => {
-      const url =
-        typeof source === "string" ? source : URL.createObjectURL(source);
-      selectSong({
-        id: "preview-audio",
-        title,
-        artist: "음원 미리듣기",
-        audioSrc: url,
-        difficulty: "보통",
-        coverTheme: "blue",
-        tags: [],
-        lines: [],
-      });
-      if (typeof source !== "string") previewUrl.current = url;
-      previewRef.current = true;
-      setIsPreview(true);
-      void playAudio();
-    },
-    [selectSong, playAudio],
-  );
   const retry = useCallback(() => {
     audioRef.current?.load();
     void playAudio();
@@ -239,17 +209,12 @@ function usePlayerStore(songs: Song[]) {
   useEffect(
     () => () => {
       audioRef.current?.pause();
-      if (previewUrl.current) URL.revokeObjectURL(previewUrl.current);
     },
     [],
   );
   useEffect(() => {
     const current = songRef.current;
-    if (
-      current &&
-      !previewRef.current &&
-      !songs.some((s) => s.id === current.id)
-    )
+    if (current && !songs.some((s) => s.id === current.id))
       removeSong(current.id);
   }, [songs, removeSong]);
   useEffect(() => {
@@ -275,7 +240,7 @@ function usePlayerStore(songs: Song[]) {
     return () => cancelAnimationFrame(frame);
   }, [isPlaying]);
   useEffect(() => {
-    if (!isPlaying || isPreview) return;
+    if (!isPlaying) return;
     let last = performance.now(),
       position = audioRef.current?.currentTime || 0,
       elapsed = 0;
@@ -302,14 +267,10 @@ function usePlayerStore(songs: Song[]) {
       clearInterval(timer);
       if (elapsed > 0) addListening(elapsed);
     };
-  }, [isPlaying, isPreview, addListening]);
+  }, [isPlaying, addListening]);
   const onEnded = () => {
     const a = audioRef.current;
     if (!a) return;
-    if (previewRef.current) {
-      pause();
-      return;
-    }
     const l = loopRef.current;
     if (l) {
       a.currentTime = l.start;
@@ -323,8 +284,6 @@ function usePlayerStore(songs: Song[]) {
   return {
     audioRef,
     song,
-    isPreview,
-    previewAudio,
     currentTime,
     duration,
     isPlaying,
@@ -335,7 +294,6 @@ function usePlayerStore(songs: Song[]) {
     loopMessage,
     selectSong,
     playSong,
-    removeSong,
     seek,
     playAudio,
     pause,
@@ -348,8 +306,7 @@ function usePlayerStore(songs: Song[]) {
     onEnded,
     onPlay: () => {
       setIsPlaying(true);
-      if (songRef.current && !previewRef.current)
-        markPlayed(songRef.current.id, !counted.current);
+      if (songRef.current) markPlayed(songRef.current.id, !counted.current);
       counted.current = true;
     },
     syncMetadata: () => {

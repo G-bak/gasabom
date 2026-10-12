@@ -8,7 +8,6 @@ import { CoverArt } from "@/components/CoverArt";
 import { Icon } from "@/components/Icon";
 import { usePracticeState } from "@/lib/storage";
 import type { Song } from "@/lib/types";
-import { SETTINGS_VISIBLE } from "@/lib/features";
 type Filter = "all" | "favorites" | "recent" | "learned";
 export function LibraryScreen({ songs }: { songs: Song[] }) {
   const params = useSearchParams();
@@ -128,12 +127,6 @@ export function LibraryScreen({ songs }: { songs: Song[] }) {
                 aria-label="노래 검색"
               />
             </label>
-            {SETTINGS_VISIBLE && (
-              <Link className="button button-primary" href="/settings">
-                곡 추가
-                <Icon name="plus" size={16} />
-              </Link>
-            )}
           </div>
           <div className="genre-chips" aria-label="장르 필터">
             {["전체", ...new Set(songs.map((s) => s.genre || "J-POP"))].map(
@@ -294,16 +287,6 @@ export function LibraryScreen({ songs }: { songs: Song[] }) {
               </p>
             )}
           </section>
-          {SETTINGS_VISIBLE && (
-            <Link className="library-help" href="/settings">
-              <Icon name="book" size={22} />
-              <strong>곡 파일 관리</strong>
-              <span>
-                음원·가사 파일 확인
-                <Icon name="chevron-right" size={16} />
-              </span>
-            </Link>
-          )}
         </aside>
       </div>
     </main>
