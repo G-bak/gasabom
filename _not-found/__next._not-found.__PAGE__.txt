@@ -1,0 +1,27 @@
+2:"$Sreact.fragment"
+3:"/gasabom/_next/static/chunks/0umf92h1sb77c.js"
+4:"/gasabom/_next/static/chunks/28h9fivbbwucx.js"
+5:I[39756,["$3","$4"],"default"]
+6:I[37457,["$3","$4"],"default"]
+b:I[22016,["$3","$4"],""]
+c:I[97367,["$3","$4"],"OutletBoundary"]
+d:"$Sreact.suspense"
+10:"ViewportBoundary"
+11:I[97367,["$3","$4"],"$10"]
+12:"MetadataBoundary"
+13:I[97367,["$3","$4"],"$12"]
+14:I[27201,["$3","$4"],"IconMark"]
+8:X
+8:C
+9:X
+a:[["children",{"s":"__PAGE__","h":160,"d":{"r":["$","$2","c",{"children":[["$","main",null,{"className":"not-found-page","children":["$","div",null,{"children":[["$","span",null,{"className":"not-found-icon","children":"♫"}],["$","h1",null,{"children":"이 곡은 아직 보관함에 없어요."}],["$","p",null,{"children":"주소를 확인하거나 새 곡을 추가해 보세요."}],["$","$Lb",null,{"href":"/","className":"button button-primary","children":"보관함으로 돌아가기 →"}]]}]}],null,["$","$Lc",null,{"children":["$","$d",null,{"name":"Next.MetadataOutlet","children":"$@e"}]}]]}],"p":"$@f","v":null,"s":"$9"}}]]
+1:[["children",{"s":"/_not-found","h":64,"d":{"r":["$","$2","c",{"children":[null,["$","$L5",null,{"parallelRouterKey":"children","template":["$","$L6",null,{}]}]]}],"p":"$@7","v":"$8","s":"$9"},"c":"$Qa"}]]
+0:{"t":{"t":{"s":"","h":16,"c":"$Q1"},"h":{"r":["$","$2","h",{"children":[["$","meta",null,{"name":"robots","content":"noindex"}],["$","$L11",null,{"children":[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]}],["$","$L13",null,{"children":[["$","div",null,{"hidden":true,"children":["$","$d",null,{"name":"Next.Metadata","children":[["$","title","0",{"children":"가사봄 | J-POP 가사 연습"}],["$","meta","1",{"name":"description","content":"일본어 원문, 한글 발음, 한국어 뜻을 보며 J-POP 가사를 연습하는 개인용 사이트"}],["$","meta","2",{"name":"robots","content":"noindex, nofollow"}],["$","link","3",{"rel":"shortcut icon","href":"/gasabom/favicon.ico?v=2"}],["$","link","4",{"rel":"icon","href":"/gasabom/icons/favicon-16x16.png?v=2","sizes":"16x16","type":"image/png"}],["$","link","5",{"rel":"icon","href":"/gasabom/icons/favicon-32x32.png?v=2","sizes":"32x32","type":"image/png"}],["$","link","6",{"rel":"icon","href":"/gasabom/icons/favicon-48x48.png?v=2","sizes":"48x48","type":"image/png"}],["$","link","7",{"rel":"icon","href":"/gasabom/icons/favicon.svg?v=2","sizes":"any","type":"image/svg+xml"}],["$","$L14","8",{}]]}]}],null]}],["$","meta",null,{"name":"next-size-adjust","content":""}]]}],"p":"$@15","v":null,"s":"$9"}},"a":"$@16","u":"$@17","b":"7_nvs0KTjWGGuQ8jmogH_"}
+e:null
+17:true
+9:300
+9:C
+16:0
+7:"$undefined"
+15:"$undefined"
+f:"$undefined"

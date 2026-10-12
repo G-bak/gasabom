@@ -1,0 +1,17 @@
+{
+  "format": "gasabom-static-build",
+  "version": 1,
+  "basePath": "/gasabom",
+  "songs": [
+    {
+      "id": "official-hige-dandism-pretender",
+      "title": "Pretender",
+      "artist": "Official Hige Dandism",
+      "lyricsSha256": "c57a098bae933818a6dc77ff22cb76c08a31bd47c884a3b82dd33a714961b68f",
+      "audioSrc": "/audio/official-hige-dandism-pretender.mp3",
+      "audioSha256": "9d5dec310cf7669168ee55dc476f511ceeba5b57a2a60f2f0f713e9804cc731d",
+      "coverSrc": "/covers/pretender-v2.svg",
+      "coverSha256": "93fc395a0f7317d44f22afb4fb23ef8f2d794ef5cba74d56cb0a5483cf588d7d"
+    }
+  ]
+}
